@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bio-Luminescent AI HUD</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <svg style="display:none;">
+            <filter id="biolumFilter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G"
+                result="distortion" />
+                <feColorMatrix type="matrix" values="
+                1 0 0 0 0
+                0 2 0 0 0
+                0 0 1.5 0 0
+                0 0 0 18 -7" in="distortion" result="glow" />
+                <feMerge>
+                    <feMergeNode in="glow" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </svg>
+        <div class="cyber-grid"></div>
+        <div class="hud-container">
+            <div class="hud-header">
+                <div class="hud-title bio-organic">SYNAPSE // BIO-HUD v2.4</div>
+                <div class="status-badge">SYSTEM STABLE : ACTIVE</div>
+            </div>
+            <div class="hud-sidebar">
+                <div class="data-card">
+                    <h4>ORGANIC FLUIDITY</h4>
+                    <p>Turbulence: 0.02Hz</p>
+                    <p>Viscosity Index: 1.42 Pas</p>
+                </div>
+                <div class="data-card">
+                    <h4>BIOLUMINESCENCE</h4>
+                    <p>Emission Spectrum: 520nm</p>
+                    <p>ATP Density: 88.4%</p>
+                </div>
+            </div>
+            <div class="hud-core">
+                <div class="core-ring-outer"></div>
+                <div class="core-ring"></div>
+                <div class="core-orb bio-organic"></div>
+            </div>
+            <div class="hud-sidebar" style="align-items: flex-end; text-align: right;">
+                <div class="data-card"
+                style="border-left: none; border-right: 3px solid var(--hud-secondary); width: 100%;">
+                <h4>NEURAL SYNC</h4>
+                <p>Latency: 0.14 ms</p>
+                <p>Packet Loss: 0.00%</p>
+            </div>
+            <div class="data-card"
+            style="border-left: none; border-right: 3px solid var(--hud-secondary); width: 100%;">
+            <h4>CORE TEMP</h4>
+            <p>Status: Cryo-Locked</p>
+            <p>Reading: 34.2 C</p>
+        </div>
+    </div>
+    <div class="hud-footer">
+        <div>SECURE_SOCKET: CONNECTED</div>
+        <div>
+            BIOMTR_SYNC
+            <div class="metric-bar">
+                <div class="metric-fill"></div>
+            </div>
+        </div>
+        <div>LOC: 37.7749 N, 122.4194 W</div>
+    </div>
+</div>
+</body>
+</html>"
